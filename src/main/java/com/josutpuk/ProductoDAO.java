@@ -59,7 +59,11 @@ public class ProductoDAO {
             ps.setInt(1, nuevoStock);
             ps.setInt(2, idProducto);
 
-            ps.executeUpdate();
+            int filas = ps.executeUpdate();
+
+            if (filas == 0) {
+                throw new SQLException("El producto no existe");
+            }
 
         }
 
